@@ -78,3 +78,15 @@ CREATE TABLE TRABALHA_EM
     FOREIGN KEY (pnumero) REFERENCES PROJETO(numero),
     FOREIGN KEY (fident) REFERENCES FUNCIONARIO(ident)
 );
+
+CREATE TABLE CHAMADA
+(
+    prontuario VARCHAR(15),
+    nome VARCHAR(50),
+    time_coracao VARCHAR(50),
+    PRIMARY KEY (prontuario)
+)
+
+-- empresa=# INSERT INTO CHAMADA VALUES ('bi3033988', 'Joao Pedro Ferreira de Oliveira');
+-- empresa=# select * from chamada order by nome;
+-- empresa=# UPDATE CHAMADA SET time_coracao = 'Santos' WHERE prontuario = 'bi3033988';

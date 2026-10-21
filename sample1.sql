@@ -5,15 +5,21 @@
 -- git config --global user.name "Your Name"
 -- git config --global user.email "your.email@example.com"
 
+DROP DATABASE IF EXISTS empresa;
 CREATE DATABASE empresa;
-
+\c empresa;
 CREATE DOMAIN TIPO_ID CHAR(4);
-
 CREATE DOMAIN D_NUM INTEGER CHECK (VALUE > 0 AND VALUE < 21); 
 
-CREATE TABLE funcionario;
+CREATE TABLE DEPARTAMENTO
+(
+    numero D_NUM PRIMARY KEY,
+    nome VARCHAR(30) NOT NULL,
+    gident TIPO_ID,
+    dtinicio DATE
+);
 
-CREATE TABLE funcionario;
+CREATE TABLE FUNCIONARIO
 (
 ident TIPO_ID,
 nome VARCHAR(15) NOT NULL,
@@ -21,28 +27,29 @@ sobrenome VARCHAR(15) NOT NULL,
 endereco VARCHAR(30),
 dtnasc DATE,
 salario DECIMAL(10,2),
-sexo BOOLEAN,
+sexo VARCHAR(15),
 supident TIPO_ID,
-dnumero TIPO_ID NOT NULL,
-PRIMARY KEY (ident)
+dnumero D_NUM NOT NULL,
+PRIMARY KEY (ident),
+FOREIGN KEY (supident) REFERENCES FUNCIONARIO(ident), 
+-- então aqui temos a a chave estrangeira que referencia a própria tabela FUNCIONARIO, ou seja, 
+-- um funcionário pode ter um supervisor que também é um funcionário.
+FOREIGN KEY (dnumero) REFERENCES DEPARTAMENTO(numero)
 );
 
-CREATE TABLE dependente;
+ALTER TABLE DEPARTAMENTO
+ADD CONSTRAINT departamento_gident_fkey
+FOREIGN KEY (gident) REFERENCES FUNCIONARIO(ident);
+
+CREATE TABLE DEPENDENTE
 (
     fident TIPO_ID,
     nome VARCHAR(15) NOT NULL,
     dtnasc DATE,
-    sexo BOOLEAN,
-    relacionamento VARCHAR(15) NOT NULL
-);
-
-CREATE TABLE DEPARTAMENTO
-(
-    numero D_NUM PRIMARY KEY,
-    nome VARCHAR(30) NOT NULL,
-    gident TIPO_ID,
-    dtinicio DATE,
-    FOREIGN KEY (gident) REFERENCES funcionario(ident)
+    sexo VARCHAR(15),
+    relacionamento VARCHAR(15) NOT NULL,
+    PRIMARY KEY (fident, nome),
+    FOREIGN KEY (fident) REFERENCES FUNCIONARIO(ident)
 );
 
 CREATE TABLE LOCALIZACOES
@@ -69,6 +76,5 @@ CREATE TABLE TRABALHA_EM
     horas DECIMAL(4,2),
     PRIMARY KEY (pnumero, fident),
     FOREIGN KEY (pnumero) REFERENCES PROJETO(numero),
-    FOREIGN KEY (fident) REFERENCES funcionario(ident)
+    FOREIGN KEY (fident) REFERENCES FUNCIONARIO(ident)
 );
-

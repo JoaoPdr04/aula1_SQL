@@ -31,15 +31,15 @@ sexo VARCHAR(15),
 supident TIPO_ID,
 dnumero D_NUM NOT NULL,
 PRIMARY KEY (ident),
-FOREIGN KEY (supident) REFERENCES FUNCIONARIO(ident), 
+-- FOREIGN KEY (supident) REFERENCES FUNCIONARIO(ident), 
 -- então aqui temos a a chave estrangeira que referencia a própria tabela FUNCIONARIO, ou seja, 
 -- um funcionário pode ter um supervisor que também é um funcionário.
-FOREIGN KEY (dnumero) REFERENCES DEPARTAMENTO(numero)
+-- FOREIGN KEY (dnumero) REFERENCES DEPARTAMENTO(numero)
 );
 
-ALTER TABLE DEPARTAMENTO
-ADD CONSTRAINT departamento_gident_fkey
-FOREIGN KEY (gident) REFERENCES FUNCIONARIO(ident);
+-- ALTER TABLE DEPARTAMENTO
+-- ADD CONSTRAINT departamento_gident_fkey
+-- FOREIGN KEY (gident) REFERENCES FUNCIONARIO(ident);
 
 CREATE TABLE DEPENDENTE
 (
@@ -86,6 +86,22 @@ CREATE TABLE CHAMADA
     time_coracao VARCHAR(50),
     PRIMARY KEY (prontuario)
 )
+
+CREATE TABLE chamada
+(
+    prontuario VARCHAR(15),
+    nome varchar(50),
+    time_coracao varchar(50),
+    PRIMARY KEY (prontuario)
+);
+
+ALTER TABLE funcionario
+ADD CONSTRAINT fk_funcionario_departamento FOREIGN KEY (dnumero) REFERENCES departamento (numero);
+-- então aqui temos uma forma mais eficiente de declarar chaves primárias, onde essa... 
+-- declaração é mais correta e com menos chance de dar errada na questão de ordem de criação
+
+ALTER TABLE funcionario
+ADD CONSTRAINT fk_funcionario_superior FOREIGN KEY (supident) REFERENCES departamento (ident);
 
 -- empresa=# INSERT INTO CHAMADA VALUES ('bi3033988', 'Joao Pedro Ferreira de Oliveira');
 -- empresa=# select * from chamada order by nome;

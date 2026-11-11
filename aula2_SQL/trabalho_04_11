@@ -1,3 +1,4 @@
+--Modelo de dados - cursos, alunos e disciplinas
 
 \c postgres;
 DROP DATABASE IF EXISTS bi3033988_ifsp;

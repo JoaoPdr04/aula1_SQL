@@ -2,8 +2,8 @@
 -- \c <DATABASE> => Change database
 -- \dt           => Show tables
 -- \d <TABElE>   => Describe table 
--- git config --global user.name "Your Name"
--- git config --global user.email "your.email@example.com"
+-- git config --global user.name "JoaoPdr04"
+-- git config --global user.email "jpfdo24@gmail.com"
 
 DROP DATABASE IF EXISTS empresa;
 CREATE DATABASE empresa;

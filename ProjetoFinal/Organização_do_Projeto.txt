@@ -1,0 +1,24 @@
+## Gestão RevoCast ##
+Sistema de Gestão de Produção e Acervo do Podcast
+
+*Controle de Episódios e Pautas
+    Registro do número, título, formato, data de gravação, data de lançamento, status de divulgação, link de publicação
+    *será que em cima disso eu consigo colocar as coisas da organização (convite, roteiro, arte...)
+
+*Alocação da Equipe
+    Nossos membros e a função de cada um, cada membro pode exercer mais de uma função ao mesmo tempo
+
+*Convidados
+    Cada convidado apresenta nome, 'função'...
+
+*Reserva e Checklist de Equipamento do Studio
+    Inventário técnico sobre os equipamentos
+
+*Termo de Responsabilidade e Anexos (isso eu ainda não tenho certeza se vale a pena fazer ou não..)
+    Levantamento da documentação e termos assinados
+
+*Pós Produção e Cortes
+    Registro de cortes e redes sociais atingidas
+
+*Check list das Tarefas - Gestão Prática Real 
+    Tarefas vinculadas aos membros e ao episódio...
